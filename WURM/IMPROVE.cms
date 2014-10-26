@@ -1,0 +1,37 @@
+//Импрувит первую вещь в инвентаре
+//$count вещами ниже этой
+$wait = RND(50,70)
+$xFirst = 67
+$yFirst = 267
+$count = 5 //Количетсво предметов для импрувинга
+
+MOVE($xFirst,$yFirst)
+WAITMS ($wait) 
+LCLICK($xFirst,$yFirst)
+WAITMS ($wait)
+KEYPRESS(#ESC)
+KEYPRESS(#ESC)
+WAITMS(1000)rr       
+KEYDOWN (#R)       
+WAITMS ($wait) 
+KEYUP (#R)                    
+WAITMS (2000) 
+ 
+ $pos = 0
+ $i = 0
+loop:
+IF($i < $count)
+  $i = $i + 1
+  DBLCLICK($xFirst,$yFirst+$i*15)
+  WAITMS ($wait)
+  MOVE($xFirst,$yFirst)
+	WAITMS ($wait)        
+	KEYDOWN (#I)
+	WAITMS ($wait) 
+	KEYUP (#I)  
+	WAITMS ($wait)
+  GOTO(loop)
+END_IF
+
+WAITMS(13000)
+

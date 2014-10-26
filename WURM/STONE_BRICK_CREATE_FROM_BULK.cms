@@ -1,0 +1,70 @@
+$wait = RND(50,70)
+//камень в ящике
+$xRock = 536
+$yRock = 333
+//инвентарь
+$xInv = 106
+$yInv = 520
+//кнопка сенд
+$xSend = 508
+$ySend = 603
+//камень в инвентаре
+$xRI = 57
+$yRI = 402
+
+//выделяет камень в инвентаре
+MOVE($xRI,$yRI)   
+WAITMS($wait)
+LDOWN($xRI,$yRI)  
+WAITMS($wait)
+//несет в ящик
+MOVE($xRock,$yRock)     
+WAITMS($wait)
+LUP($xRock,$yRock)           
+WAITMS($wait+400)
+
+//выделяет кирпич в инвентаре
+MOVE($xRI,$yRI)   
+WAITMS($wait)
+LDOWN($xRI,$yRI)  
+WAITMS($wait)
+//несет в ящик
+MOVE($xRock,$yRock)     
+WAITMS($wait)
+LUP($xRock,$yRock)           
+WAITMS($wait)
+
+//выделяет камень в ящике
+MOVE($xRock,$yRock)   
+WAITMS($wait)
+LDOWN($xRock,$yRock)  
+WAITMS($wait)
+//несет в инвентарь
+MOVE($xInv,$yInv)     
+WAITMS($wait)
+LUP($xInv,$yInv)      
+WAITMS($wait+550)
+//Вводит 1 и тыкает на Send
+KEYPRESS(#1)          
+WAITMS($wait+50)
+MOVE($xSend,$ySend)   
+WAITMS($wait)
+LCLICK($xSend,$ySend) 
+WAITMS($wait+400)
+//Тыкает на камень правой кнопкой
+MOVE($xRI,$yRI)       
+WAITMS($wait)
+RCLICK($xRI,$yRI) 
+WAITMS($wait)
+MOVE($xRI+15,$yRI+60)
+WAITMS($wait) 
+MOVE($xRI+115,$yRI+90) 
+WAITMS($wait) 
+MOVE($xRI+215,$yRI+170) 
+WAITMS($wait) 
+LCLICK($xRI+215,$yRI+170) 
+WAITMS(10700)
+KEYPRESS(#ESC)
+WAITMS(1000)
+
+

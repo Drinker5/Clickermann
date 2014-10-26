@@ -1,0 +1,34 @@
+// Континуе билдинг
+$random = RND(-10,10)
+$delay = RND(30,100)
+//Вещь в рюкзаке
+$xInv = 70 + $random
+$yInv = 541
+//Вещь в тележке
+$xCart = 544
+$yCart = 318
+//Куда вставлять
+$xBuild = 426
+$yBuild = 542
+//Уберает из инвентаря старую вещь
+WAITMS($delay)
+LDOWN($xInv, $yInv)
+WAITMS($delay)
+LUP($xCart, $yCart)
+//Тянет новую вещь
+WAITMS($delay+300)
+LDOWN($xCart, $yCart)
+WAITMS($delay)
+LUP($xInv, $yInv)
+//выделяет вещь
+WAITMS($delay+300)
+DBLCLICK($xInv, $yInv)
+//Конитнюет билдинг
+WAITMS($delay)
+MOVE($xBuild, $yBuild)
+WAITMS($delay)
+KEYDOWN(#B)                         
+WAITMS($delay)
+KEYUP(#B)
+//Время контининга
+WAITMS(22000)

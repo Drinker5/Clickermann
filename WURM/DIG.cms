@@ -1,0 +1,23 @@
+//Копает хорошо
+// RECORDED SCRIPT 13.01.2013
+$K_SPEED = 4  // Delay multiplier
+$rnd = RND(-50,50)
+$wait = RND(50,100)
+$x = 694 + $rnd
+$y = 433 + $rnd
+MOVE($x,$y) 
+WAITMS ($wait)  
+LCLICK($x,$y) 
+WAITMS ($wait)  
+MOVE($x+3,$y)    
+WAITMS ($wait)  
+
+KEYDOWN (#SHIFT)
+WAITMS ($wait)
+KEYDOWN (#D)
+WAITMS ($wait)
+KEYUP (#D)
+WAITMS ($wait) 
+KEYUP (#SHIFT)
+
+WAITMS(12000+$rnd)

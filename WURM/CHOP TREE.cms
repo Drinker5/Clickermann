@@ -1,0 +1,27 @@
+
+// Рубит дрова хорошо
+$K_SPEED = 4  // Delay multiplier
+$x = 694
+$y = 433
+WAITMS (500) 
+MOVE($x,$y) 
+WAITMS (50)  
+LCLICK($x,$y) 
+WAITMS (50)  
+MOVE($x+3,$y)    
+WAITMS (50)  
+ 
+KEYDOWN (#C)
+WAITMS (50) 
+KEYUP (#C)  
+WAITMS (50)
+
+KEYDOWN (#SHIFT)
+WAITMS (50)
+KEYDOWN (#C)
+WAITMS (50)
+KEYUP (#C)
+WAITMS (50) 
+KEYUP (#SHIFT)
+
+WAITMS(18000)

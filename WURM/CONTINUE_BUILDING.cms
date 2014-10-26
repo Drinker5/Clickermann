@@ -1,0 +1,21 @@
+// ‘»ÿ€Õ√
+$K_SPEED = 4  // Delay multiplier 
+$random = RND(-10,10)
+$delay = RND(30,100)
+$x1 = 90 + $random
+$y1 = 385
+$x2 = 659 + $radnom
+$y2 = 526 + $random
+WAITMS($delay)
+MOVE($x1, $y1)
+WAITMS($delay)
+DBLCLICK($x1, $y1)
+WAITMS($delay)
+MOVE($x2, $y2)
+WAITMS($delay)
+MOVE($x2-1, $y2-1)
+WAITMS($delay)
+KEYDOWN (#B)
+WAITMS ($delay)
+KEYUP (#B)
+WAITMS(17000)

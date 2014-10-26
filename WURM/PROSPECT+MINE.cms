@@ -1,0 +1,22 @@
+// Копает прямо 
+$coords = RND(-100,100) 
+$x = 703 + $coords
+$y = 488 + $coords
+$delay = RND(50,150)
+WAITMS($delay)
+MOVE($x, $y)
+WAITMS($delay)
+MOVE($x, $y)
+WAITMS($delay)
+LCLICK($x, $y)
+WAITMS($delay)
+MOVE($x, $y)
+WAITMS($delay)
+MOVE($x-3, $y)
+WAITMS($delay)
+MCLICK($x, $y)
+WAITMS($delay)
+KEYDOWN(#M)
+WAITMS(50)
+KEYUP(#M)
+WAITMS(30500-$delay)

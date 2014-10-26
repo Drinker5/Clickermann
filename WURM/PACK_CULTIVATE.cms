@@ -1,0 +1,36 @@
+//Культивейт пакинг
+$wait = RND(50,100)
+$x = 700
+$y = 500
+MOVE($x,$y) 
+WAITMS ($wait)  
+LCLICK($x,$y) 
+WAITMS ($wait)  
+MOVE($x+2,$y)
+WAITMS ($wait)
+KEYDOWN (#ALT)
+WAITMS ($wait)
+KEYDOWN (#C)
+WAITMS ($wait)
+KEYUP (#C)
+WAITMS ($wait) 
+KEYUP (#ALT)
+
+WAITMS(12000)
+
+MOVE($x,$y) 
+WAITMS ($wait)  
+LCLICK($x,$y)
+WAITMS ($wait)
+MOVE($x+2,$y) 
+WAITMS ($wait)   
+KEYDOWN (#ALT)
+
+WAITMS ($wait)
+KEYDOWN (#P)
+WAITMS ($wait)
+KEYUP (#P)
+WAITMS ($wait) 
+KEYUP (#ALT)
+
+WAITMS(13000)

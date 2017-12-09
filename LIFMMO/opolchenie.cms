@@ -1,0 +1,19 @@
+LCLICK(691,808)  // 1123099
+// New Script
+// Author: Anonymous
+// Version: 1.0 (03.12.2017)
+
+#name "Ополчение"
+
+// begin your script here
+$wait = 300
+$cooldown = 1300
+$x = 800
+$y = 438         
+//Тыкаем ЛКМ
+LDOWN($x,$y)
+WAITMS($wait)
+LUP($x,$y)
+WAITMS($cooldown)
+
+//halt // for single runq

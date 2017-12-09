@@ -1,0 +1,49 @@
+// New Script
+// Author: Anonymous
+// Version: 1.0 (01.12.2017)
+
+#name "Передвижение"
+$winsize_x = 1600
+$winsize_y = 900
+$cx = $winsize_x / 2
+$cy = $winsize_y / 2
+
+$q_but_x = $cx+100
+$q_but_y = $cy+40
+LOGWRITE ($q_but_x)
+LOGWRITE ($q_but_y)
+
+$min_wait = 50
+$wait = 500
+$do_wait = 2500
+//Q на туесок
+WAITMS($min_wait)
+KEYPRESS(#Q)
+WAITMS($min_wait)
+//Click на поднять
+LCLICK($q_but_x,$q_but_y)
+//Подникмаем
+WAITMS($do_wait)
+//Q на землю
+KEYPRESS(#Q)
+WAITMS($min_wait)
+//Положить
+LCLICK($q_but_x,$q_but_y)
+WAITMS($wait*2)
+//Регулировка высоты Z
+$x = 272
+$y = 335
+LDOWN($x,$y)
+WAITMS($min_wait)
+MOVE($x,$y+30)
+WAITMS($min_wait)
+LUP($x,$y+30)
+WAITMS($min_wait)
+//Кнопка Поместить
+MOVE($x,$y+170)
+LCLICK($x,$y+170)
+//Помещаем 
+WAITMS($do_wait)
+
+
+//halt // for single runq

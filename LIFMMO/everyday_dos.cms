@@ -1,0 +1,17 @@
+// New Script
+// Author: Anonymous
+// Version: 1.0 (01.12.2017)
+
+#name "Повседневные действия"
+
+// begin your script here
+$min_wait = 50
+$lag_wait = 500
+$cooldown = 5200
+//Тыкаем 9
+KEYPRESS(#9)
+WAITMS($lag_wait)
+WAITMS($cooldown)
+
+
+//halt // for single runq

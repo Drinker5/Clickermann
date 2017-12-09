@@ -1,0 +1,25 @@
+// New Script
+// Author: Anonymous
+// Version: 1.0 (01.12.2017)
+
+#name "Повседневные действия"
+
+// begin your script here
+$lag = 5
+$min_wait = 50
+$wait = 8
+$cycles = 6
+$cast = 10
+$cd = 60 - $cast -($wait*$cycles)
+
+KEYPRESS(#8)
+WAITMS($min_wait)
+LCLICK(683,528)  // 461323
+WAIT($cast + $lag)
+
+for ($i=0, $i<$cycles)
+  //Тыкаем 9 
+  KEYPRESS(#9)
+  WAIT($wait)
+end_cyc
+WAIT($cd)

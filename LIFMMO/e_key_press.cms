@@ -1,0 +1,11 @@
+#name "¬перЄд и клик"
+
+$key = #E
+$min_wait = 50
+$wait = 400
+KEYPRESS($key)
+WAITMS($wait)
+
+
+
+//halt // for single runq

@@ -9,21 +9,35 @@
 
 $cd = 30
 $lag_wait = 0.5
-$do_wait = 6
-$cycles = 5
-KEYPRESS(#R)
-wait($lag_wait)
-KEYPRESS(#7)
-wait($lag_wait)
-KEYPRESS(#R)
-wait($lag_wait)
+$do_wait = 5.5
+$cycles = 2
+SUB(arm, $key)
+   	KEYPRESS(#R)
+		wait($lag_wait)
+		KEYPRESS($key)
+		wait($lag_wait)
+		KEYPRESS(#R)
+		wait($lag_wait)
+END_SUB
 
-FOR($i=0, $i < $cycles)
-  KEYPRESS(#E)
-	wait($do_wait)
-END_CYC
+SUB(f8, $tryes)
+  FOR($try=0, $try<$tryes)
+  	arm(#F8)
 
-$wait($cd-$do_wait*$cycles)
+		FOR($i=0, $i < $cycles)
+  		KEYPRESS(#E)
+			wait($do_wait)
+		END_CYC
+  END_CYC
+  wait($lag_wait)
+END_SUB
+
+arm(#F5)
+f8(3) 
+arm(#F6)
+f8(3)   
+ 
+//$wait($cd-$do_wait*$cycles)
 
 
 //halt // for single runq

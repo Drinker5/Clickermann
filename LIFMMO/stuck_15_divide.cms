@@ -1,0 +1,16 @@
+						// New Script
+// Author: Anonymous
+// Version: 1.0 (01.12.2017)
+
+#name "Делю землю"
+
+// begin your script here
+$stuck = 60 
+
+$s60 = 7
+FOR($a = 0, $a < $s60)
+	WHEELUP
+END_CYC
+
+
+halt

@@ -3,7 +3,7 @@
 // Author: Anonymous
 // Version: 1.0 (03.12.2017)
 
-#name "Природа + строевая"
+#name "Молитва + строевая"
 
 // begin your script here
 
@@ -23,20 +23,15 @@ END_SUB
 SUB(f8, $tryes)
   FOR($try=0, $try<$tryes)
   	arm(#F9)
-
-		FOR($i=0, $i < $cycles)
-  		KEYPRESS(#E)
-			wait($do_wait)
-		END_CYC
   END_CYC
   wait($lag_wait)
 END_SUB
 
-arm(#F5)
-f8(3) 
-arm(#F6)
-f8(3)   
- 
+
+f8(1) 
+KEYPRESS(#E)
+$cast = 10 
+wait($cast) 
 //$wait($cd-$do_wait*$cycles)
 
 

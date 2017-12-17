@@ -1,0 +1,14 @@
+// New Script
+// Author: Anonymous
+// Version: 1.0 (01.12.2017)
+
+#name "Повседневные действия"
+
+// begin your script here
+$cast = 5
+
+KEYPRESS(#8)
+WAITMS($min_wait)
+LCLICK(683,528)  // 461323
+WAIT($cast)
+LCLICK(799,507)  // 790032

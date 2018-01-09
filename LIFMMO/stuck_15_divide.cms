@@ -7,10 +7,14 @@
 // begin your script here
 $stuck = 60 
 
-$s60 = 7
-FOR($a = 0, $a < $s60)
-	WHEELUP
-END_CYC
-
+LCLICK(1094,411)  // 16777215
+waitms(10)
+KEYPRESS(#1)
+waitms(10)
+KEYPRESS(#5)
+waitms(10)
+LCLICK(793,479)  // 16777215
+waitms(10)
+LCLICK(793,479)  // 16777215
 
 halt

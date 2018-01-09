@@ -1,0 +1,51 @@
+// 08.01.2018
+#name "New Script"
+
+$min_wait = 10
+$cycles_before_eat = 10
+SUB(press_e)       
+	KEYPRESS(#E)
+	waitms($min_wait) 
+END_SUB
+
+SUB(press_q)       
+	KEYPRESS(#Q)
+	waitms(200) 
+END_SUB
+
+SUB(place_tree)
+  press_e() 
+  wait(7)
+END_SUB
+
+SUB(cut_tree)
+	press_q()
+	LCLICK(930,547)  // срубить
+	wait(13)
+END_SUB
+
+SUB(remove_tree)
+	press_q()
+	LCLICK(930,547)  // выкорчевать
+	wait(13)
+END_SUB
+
+SUB(eat)
+	KEYPRESS(#6)
+	wait(5)
+END_SUB
+
+SUB(restore)
+  KEYPRESS(#9)
+  wait(30)
+  KEYPRESS(#9)
+  wait(5)
+END_SUB
+
+FOR($i=0,$i<$cycles_before_eat) 
+  place_tree()
+  cut_tree()
+  remove_tree()
+END_CYC
+restore()
+eat()

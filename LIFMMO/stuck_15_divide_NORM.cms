@@ -1,0 +1,31 @@
+						// New Script
+// Author: Anonymous
+// Version: 1.0 (01.12.2017)
+
+#name "Делю нормально"
+
+// begin your script here
+$times = 11
+$min_wait = 10
+$delay = 300
+$x_item = $_xmouse
+$y_item = $_ymouse
+waitms(300)
+FOR($a=0,$a<$times) 
+KEYDOWN (#SHIFT)
+WAITMS ($min_wait)
+LCLICK($x_item,$y_item)  // 4281504
+WAITMS ($min_wait)
+KEYUP (#SHIFT)
+WAITMS ($min_wait)
+LCLICK(1254,503)  // 1907997
+WAITMS ($min_wait)
+KEYPRESS(#1)
+WAITMS ($min_wait)
+KEYPRESS(#5)
+WAITMS ($min_wait)
+LCLICK(960,570)  // 270677
+waitms($delay)
+END_CYC
+
+halt

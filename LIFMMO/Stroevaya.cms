@@ -2,17 +2,10 @@
 // Author: Anonymous
 // Version: 1.0 (03.12.2017)
 
-#name "Ополчение"
+#name "Строевая"
 
 // begin your script here
-$wait = 300
 $cooldown = 1000
-$x = 800
-$y = 438         
-
-//LDOWN($x,$y)
-WAITMS($wait)
-KEYPRESS(#H)
 WAITMS($cooldown)
 KEYPRESS(#7)
 

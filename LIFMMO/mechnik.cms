@@ -5,14 +5,16 @@
 #name "Ополчение"
 
 // begin your script here
-$wait = 300
-$cooldown = 1000
+$wait = 250
+$cooldown = 1500
 $x = 800
 $y = 438         
+$dy = 150
 
-//LDOWN($x,$y)
+Move($x, $y-$dy+2)
+KEYPRESS(#U)
 WAITMS($wait)
-KEYPRESS(#H)
+Move($x, $y+$dy)
 WAITMS($cooldown)
 KEYPRESS(#7)
 

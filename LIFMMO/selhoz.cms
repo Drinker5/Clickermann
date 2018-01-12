@@ -1,0 +1,44 @@
+// 08.01.2018
+#name "New Script"
+
+$min_wait = 10
+$cycles_before_eat = 25
+SUB(press_e)       
+	KEYPRESS(#E)
+	waitms($min_wait) 
+END_SUB
+
+SUB(press_q)       
+	KEYPRESS(#Q)
+	waitms(200) 
+END_SUB
+
+SUB(pahat)
+  press_e() 
+  wait(7)
+END_SUB
+
+SUB(water)
+	press_q()
+  LCLICK(879,811)  // 16777215
+	wait(9)
+END_SUB
+
+SUB(eat)
+	KEYPRESS(#6)
+	wait(5)
+END_SUB
+
+SUB(restore)
+  KEYPRESS(#9)
+  wait(30)
+  KEYPRESS(#9)
+  wait(5)
+END_SUB
+
+FOR($i=0,$i<$cycles_before_eat) 
+  water()
+  pahat()
+END_CYC
+restore()
+eat()

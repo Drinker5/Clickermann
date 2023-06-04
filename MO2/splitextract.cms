@@ -1,0 +1,102 @@
+﻿// New Script
+// Author: Anonymous
+// Version: 1.0 (01.12.2017)
+
+#name "delit zemlu normalno"
+
+$min_wait = 15
+$delay = 300
+
+$x_item = $_xmouse
+$y_item = $_ymouse
+
+$dx_split = 50
+$dy_split = 70
+
+$dx_plus = 220
+$dy_plus = 30
+
+$dx_extract = -150
+$dy_extract = 150
+
+$x_split = $x_item + $dx_split
+$y_split = $y_item + $dy_split
+
+$x_plus = $x_item + $dx_plus 
+$y_plus = $y_item + $dy_plus
+
+
+
+$x_second_item = $x_item + 70
+$y_second_item = $y_item
+
+$x_extract = $x_item + $dx_extract
+$y_extract = $y_item + $dy_extract
+
+$extraction_wait = 1800
+$open_wait = 650
+$itemcount = 598 
+     
+//*                     
+
+sub(shiftRclick,$x,$y)
+  MOVE($x+1,$y+1) 
+  waitms(30)
+  KEYDOWN(#SHIFT)
+  RCLICK($x,$y)
+  waitms(1)  
+  RCLICK($x,$y+1)
+  waitms(1)
+  RCLICK($x,$y)
+  waitms(1)
+ 	KEYUP(#SHIFT)
+end_sub
+
+sub(delit15)
+  shiftRclick($x_item,$y_item)
+  shiftRclick($x_item,$y_item)
+  shiftRclick($x_item,$y_item)
+  shiftRclick($x_item,$y_item)
+ 	WAITMS (30)
+  LCLICK($x_plus,$y_plus)
+	WAITMS (200)
+	LCLICK($x_split,$y_split) 
+  waitms($min_wait)  
+end_sub
+
+sub(drop, $x_stack, $y_stack)
+	RCLICK($x_stack,$y_stack)
+	waitms($min_wait)
+end_sub
+
+sub(extract, $x_btn, $y_btn)
+  LDOWN($x_btn,$y_btn)
+  waitms($extraction_wait)
+  LUP($x_btn,$y_btn)
+ 	waitms($min_wait) 
+end_sub
+
+sub(open)
+  KEYDOWN(#R)
+  waitms($open_wait)
+  KEYUP(#R)
+ 	waitms($min_wait)   
+end_sub
+
+waitms(300)
+
+FOR($a=1,$a<$itemcount+1) 
+
+  KEYDOWN(#R)
+ 	waitms($min_wait)
+  delit15()
+  waitms($open_wait)
+  KEYUP(#R)
+ 	waitms($min_wait) 
+  #open()
+  drop($x_second_item,$y_second_item)
+  extract($x_extract, $y_extract)
+
+waitms(100)
+END_CYC
+halt

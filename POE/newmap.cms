@@ -1,0 +1,38 @@
+// RECORDED SCRIPT 28.09.2020
+// waitms correction
+$S_CORR = 0
+$x_map = 333
+$y_map = 606
+move(1294,662)
+waitms(16 + $S_CORR)
+move(1292,662)
+waitms(160 + $S_CORR)
+  lDown(1292,662)
+waitms(88 + $S_CORR)
+  lUp(1292,662)
+waitms(104 + $S_CORR)
+
+waitms(8 + $S_CORR)
+
+move(622,486)
+waitms(104 + $S_CORR)
+  keyDown(17)
+waitms(0 + $S_CORR)
+  keyDown(162)
+waitms(160 + $S_CORR)
+move($x_map,$y_map)
+waitms(160 + $S_CORR)
+LCLICK($x_map,$y_map)
+waitms(144 + $S_CORR)
+  keyUp(162)
+waitms(0 + $S_CORR)
+  keyUp(17)
+waitms(653 + $S_CORR)
+LCLICK(654,468)
+waitms(112 + $S_CORR)
+LCLICK(654,468)
+waitms(112 + $S_CORR)
+  
+// FINISH AT 0:00:32
+//=============================================
+HALT

@@ -1,0 +1,91 @@
+						// New Script
+// Author: Anonymous
+// Version: 1.0 (01.12.2017)
+
+#name "delit zemlu normalno"
+
+$min_wait = 15
+
+// begin your script here
+$gavnocount = 570 // kolvo grazi
+$times = $gavnocount/15 - 1  // 79 == 1200
+
+$delay = 200
+$drop_delay = 4000
+
+//STRELKA UP
+$x_UP = 1573
+$y_UP = 685 
+
+$x_sort = 2094
+$y_sort = 889 //820
+$x_dirt = $x_sort+30
+$y_dirt = $y_sort-353
+$x_dirt2 = $x_dirt+70
+$y_dirt2 = $y_dirt
+$x_OK = $x_UP - 294
+$y_OK = $y_UP + 67
+$x_item = $_xmouse
+$y_item = $_ymouse
+waitms(300)        
+//*                     
+
+sub(delit15, $x_stack, $y_stack)
+  KEYDOWN (#SHIFT)
+	WAITMS ($min_wait)
+	LCLICK($x_stack,$y_stack)  
+	WAITMS ($delay)
+	KEYUP (#SHIFT)
+	WAITMS ($delay)
+	LCLICK($x_UP,$y_UP)  
+	WAITMS ($min_wait)
+	KEYPRESS(#1)
+	WAITMS ($min_wait)
+	KEYPRESS(#5)
+	WAITMS ($min_wait)
+	LCLICK($x_OK,$y_OK) 
+	waitms($min_wait) 
+end_sub
+
+sub(drop, $x_stack, $y_stack)
+	LCLICK($x_dirt,$y_dirt)
+	waitms($min_wait)
+	LCLICK($x_dirt,$y_dirt)
+	waitms($min_wait)
+end_sub
+
+FOR($a=1,$a<$times+1) 
+
+//perviy blok gavna
+IF ($a = 1)
+	LCLICK($x_sort,$y_sort)
+  waitms($delay)
+  delit15($x_dirt,$y_dirt)
+	WAITMS ($delay)  
+END_IF
+
+// visipanie
+WAITMS (100) 
+LCLICK($x_sort,$y_sort)
+//waitms($min_wait)
+drop($x_dirt,$y_dirt)
+
+//esli gavna >= 30
+IF ($a ! $times)
+  WAITMS ($delay) 
+	delit15($x_dirt2,$y_dirt2)
+END_IF
+
+waitms($drop_delay)
+LCLICK($x_sort,$y_sort)
+
+//esli gavna < 30
+IF ($a = $times)
+  //waitms($min_wait)
+	drop($x_dirt,$y_dirt)
+END_IF
+
+//waitms($delay)
+ 
+END_CYC
+halt

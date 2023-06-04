@@ -11,4 +11,8 @@ KEYPRESS(#8)
 WAITMS($min_wait)
 LCLICK(683,528)  // 461323
 WAIT($cast)
+
 LCLICK(777,460)  // 592396
+WAITMS($min_wait)
+LCLICK(772,491)  // 526862
+WAITMS($min_wait)

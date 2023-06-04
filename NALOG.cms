@@ -1,0 +1,158 @@
+$g_wait = 200
+$key_wait = 50
+$addnalog_x = 1260
+$addnalog_y = 900
+$opennalog_x = 1260
+$opennalog_y = 780
+SUB(ALTTAB) 
+  KEYDOWN (#ALT)
+  WAITMS ($key_wait)
+  KEYDOWN (#TAB)
+  WAITMS ($key_wait)
+  KEYUP (#TAB)
+  WAITMS ($key_wait)
+  KEYUP (#ALT)
+  WAITMS($g_wait)
+END_SUB
+
+SUB(COPY) 
+	KEYDOWN (#CTRL)
+	WAITMS ($key_wait)
+	KEYDOWN (#C)
+	WAITMS ($key_wait)
+	KEYUP (#C)
+	KEYUP (#CTRL)
+	WAITMS($g_wait)
+END_SUB
+
+SUB(PASTE) 
+	KEYDOWN (#CTRL)
+	WAITMS ($key_wait)
+	KEYDOWN (#V)
+	WAITMS ($key_wait)
+	KEYUP (#V)
+	KEYUP (#CTRL)
+	WAITMS($g_wait)
+END_SUB
+
+SUB(TAB, $repeats) 
+	FOR($i=0,$i<$repeats)
+		KEYPRESS(#TAB)
+		WAITMS($key_wait)
+	END_CYC
+	WAITMS($g_wait)
+END_SUB
+
+SUB(ENTER)
+	KEYPRESS(#ENTER)
+	WAITMS($g_wait)
+END_SUB
+
+SUB(SPACE)
+	KEYPRESS(#SPACE)
+	WAITMS($g_wait)
+END_SUB
+
+SUB(ADDNALOG)
+	LCLICK($addnalog_x,$addnalog_y)
+	WAITMS($key_wait)
+	KEYPRESS(#PAGEDOWN)
+	WAITMS($g_wait)
+END_SUB
+
+SUB(OPENNALOG)
+	LCLICK($opennalog_x,$opennalog_y)
+	WAITMS($g_wait)
+END_SUB
+
+SUB(INPUT_VID_DOHODA)
+	KEYSTRING("1010")
+	WAITMS($g_wait)
+END_SUB
+
+SUB(INPUT_NALOG_VICHET)
+	KEYPRESS(#DOWN)
+	WAITMS($key_wait)
+	KEYPRESS(#DOWN)
+	WAITMS($g_wait)
+END_SUB
+
+SUB(EXCEL_COPY_NEXT)
+	COPY()
+	TAB(1)
+	WAITMS($g_wait)
+END_SUB
+//=============================================
+
+//NALOG.RU
+ADDNALOG()
+OPENNALOG()
+ALTTAB()
+
+//Excel Наименование-Страна
+EXCEL_COPY_NEXT()
+ALTTAB()
+
+//NALOG.RU Наименование-Страна
+TAB(2)
+PASTE()
+TAB(1)
+ALTTAB()
+
+//Excel Страна-Сумма дохода
+EXCEL_COPY_NEXT()
+ALTTAB()
+
+//NALOG.RU Наименование-Страна-Вычет-Сумма
+PASTE()
+TAB(3)
+INPUT_VID_DOHODA()
+TAB(2)
+INPUT_NALOG_VICHET()
+TAB(2)
+ALTTAB()
+
+//Excel Сумма дохода-Даты
+EXCEL_COPY_NEXT()
+ALTTAB()
+
+//NALOG.RU Сумма-Дата1
+PASTE()
+TAB(1)
+ALTTAB()
+
+//Excel Даты-Валюта
+EXCEL_COPY_NEXT()
+ALTTAB()
+
+//NALOG.RU Дата1-Дата2-Валюта
+PASTE()
+ENTER()
+TAB(1)
+PASTE()
+ENTER()
+TAB(1)
+ALTTAB()
+
+//Excel Валюта-Налог
+EXCEL_COPY_NEXT()
+ALTTAB()
+
+//NALOG.RU Валюта-Налог
+PASTE()
+TAB(6)
+SPACE()
+TAB(1)
+ALTTAB()
+
+//Excel Налог-Следующая строка-Наименование
+EXCEL_COPY_NEXT()
+ENTER()
+ENTER()
+ALTTAB()
+
+//NALOG.RU Налог
+PASTE()
+KEYPRESS(#PAGEDOWN)
+
+HALT

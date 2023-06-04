@@ -1,0 +1,41 @@
+SUB(MouseMove, $x1, $y1, $x2, $y2)
+	$pps = RND(10,30)
+	$fps = 30
+	
+	$dist = DIST($x1,$y1,$x2,$y2)
+	
+	$seconds = $dist / $pps
+	$msPerMove = 1000 / $fps
+	$steps = $seconds * $fps
+
+	$dx = ($x2 - $x1) 
+	$dy = ($y2 - $y1)
+	
+	$step = 0
+	WHILE($step < $steps)
+		$t = $step / $steps
+		$x = INT(($dx * $t) + $x1)
+		$y = INT(($dy * $t) + $y1)
+		INC($step, 1)
+		MOVE($x,$y)
+		WAITMS($msPerMove)
+	END_CYC
+END_SUB
+
+SUB(MouseMoveFromCurrent, $x2, $y2)
+	MouseMove($_xmouse, $_ymouse, $x2, $y2)
+END_SUB
+
+SUB(ClickZone, $x, $y, $w, $h)
+	$p = 10
+	$xRnd = RND($p,100-$p) / 100
+	$yRnd = RND($p,100-$p) / 100
+		
+	$xClick = INT($x + ($xRnd * $w))
+	$yClick = INT($y + ($yRnd * $h))
+
+	MouseMoveFromCurrent($xClick, $yClick)
+	print("Click x = ", $xClick, " y = ", $yClick)
+	WAITMS(RND(500,1000))
+	LCLICK($xClick, $yClick)
+END_SUB

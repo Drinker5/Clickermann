@@ -1,0 +1,39 @@
+﻿// 29.09.2021
+#name "New World"
+#include "funcs.cms"
+
+$waitFrom = 550
+$waitTo = 650
+
+$hwnd = WNDFIND("New World", TRUE)
+IF($hwnd = 0)
+	HALT
+END_IF
+
+wndgetinfo($hwnd, $xStart, $yStart, $winSizeX, $winSizeY)
+
+print("Window Size W=", $winSizeX, ", H=", $winSizeY)
+$headerSize = 29
+$borderSize = 1
+INC($xStart, $borderSize)
+INC($yStart, $headerSize + $borderSize)
+$menuSize = INT(($winSizeY - $headerSize - (2*$borderSize)) / 15.38)
+print("StartPoint X=", $xStart, ", Y=", $yStart)
+print("MenuSize = ", $menuSize)
+$buttons = 9
+$menuButtonSize = $winSizeX / $buttons  
+WHILE(TRUE)
+	$s = RND(0,1)
+	SWITCH($s)
+		CASE(0)
+			$buttonForClick = RNDFROM(1,2,3,4,5,6,7)
+			$xClick = $xStart + ($menuButtonSize * $buttonForClick)
+			$yClick = $yStart
+			ClickZone($xClick, $yClick, $menuButtonSize, $menuSize)
+		CASE(1)
+			$key = RNDFROM(#G, #M, #J, #K)
+			KEYPRESS($key)
+	END_SWITCH
+
+	WAIT(RND($waitFrom,$waitTo))
+END_CYC

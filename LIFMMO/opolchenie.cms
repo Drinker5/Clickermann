@@ -14,7 +14,7 @@ $y = 438
 WAITMS($wait)
 KEYPRESS(#H)
 WAITMS($cooldown)
-KEYPRESS(#7)
+#KEYPRESS(#7)
 
 				
 

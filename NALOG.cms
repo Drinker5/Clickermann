@@ -1,9 +1,13 @@
-$g_wait = 200
-$key_wait = 50
-$addnalog_x = 1260
-$addnalog_y = 900
-$opennalog_x = 1260
-$opennalog_y = 780
+п»ї$g_wait = 200
+$key_wait = 20
+$addnalog_x = $_xmouse
+$addnalog_y = $_ymouse
+$nalog_vichet_combo_x = 170
+$nalog_vichet_combo_y = -670
+$auto_curs_btn_x = 130
+$auto_curs_btn_y = -380
+$summa_dohoda_input_x = 170
+$summa_dohoda_input_y = -595
 SUB(ALTTAB) 
   KEYDOWN (#ALT)
   WAITMS ($key_wait)
@@ -43,6 +47,22 @@ SUB(TAB, $repeats)
 	WAITMS($g_wait)
 END_SUB
 
+SUB(PRESS, $KEY, $repeats) 
+	FOR($i=0,$i<$repeats)
+		KEYPRESS($KEY)
+		WAITMS($key_wait)
+	END_CYC
+	WAITMS($g_wait)
+END_SUB
+
+SUB(SHIFTTAB)
+  KEYDOWN(#SHIFT)
+  WAITMS ($key_wait)
+	TAB(1)
+	KEYUP(#SHIFT) 
+	WAITMS($g_wait)
+END_SUB
+
 SUB(ENTER)
 	KEYPRESS(#ENTER)
 	WAITMS($g_wait)
@@ -65,8 +85,20 @@ SUB(OPENNALOG)
 	WAITMS($g_wait)
 END_SUB
 
-SUB(INPUT_VID_DOHODA)
-	KEYSTRING("1010")
+SUB(INPUT_KOD_DOHODA)
+  KEYSTRING("1")
+  ENTER()
+	KEYSTRING("010")
+	WAITMS($g_wait)
+  KEYPRESS(#DOWN)
+	WAITMS($key_wait)
+	ENTER()
+END_SUB
+
+SUB(INPUT_COUNTRY)
+	KEYPRESS(#DOWN)
+	WAITMS($key_wait)
+	KEYPRESS(#DOWN)
 	WAITMS($g_wait)
 END_SUB
 
@@ -82,77 +114,104 @@ SUB(EXCEL_COPY_NEXT)
 	TAB(1)
 	WAITMS($g_wait)
 END_SUB
+
+
+SUB(SELECT_INPUT)
+  KEYPRESS(#A)
+  WAITMS($g_wait)
+  ENTER()
+  TAB(1)
+END_SUB
+
+SUB(SELECT_FIRST_OPTION)
+ 	KEYPRESS(#DOWN)
+	WAITMS($g_wait) 
+  ENTER()
+END_SUB
+
+SUB(PASTE_NEXT_FROM_EXCEL)
+  ALTTAB()
+  EXCEL_COPY_NEXT()
+  ALTTAB()
+  PASTE()
+END_SUB
+
+SUB(NEXT_ROW_EXCEL)
+  KEYPRESS(#DOWN)
+	WAITMS($g_wait)
+	KEYPRESS(#HOME)
+  WAITMS($g_wait)	 
+END_SUB
+
+SUB(ADD_OBJECT)
+  TAB(2)
+  PASTE_NEXT_FROM_EXCEL() // РќР°РёРјРµРЅРѕРІР°РЅРёРµ     
+  TAB(3)
+  SELECT_INPUT()
+  PASTE_NEXT_FROM_EXCEL() // РЎС‚СЂР°РЅР°
+  SELECT_FIRST_OPTION()
+  TAB(9)
+  SELECT_INPUT()
+	PASTE()
+	SELECT_FIRST_OPTION()
+  TAB(3)
+  ENTER()
+END_SUB
+
+SUB(SELECT_NALOG_VICHET)
+  PRESS(#PAGEDOWN,3)
+  WAITMS($g_wait) 
+  LCLICK($nalog_vichet_combo_x,$nalog_vichet_combo_y)
+  WAITMS($g_wait) 
+  PRESS(#DOWN, 2)
+	ENTER()
+END_SUB
+
+SUB(SELECT_SUMMA_DOHODA)
+  PRESS(#PAGEDOWN,3)
+  WAITMS($g_wait) 
+  LCLICK($summa_dohoda_input_x,$summa_dohoda_input_y)
+  WAITMS($g_wait) 
+END_SUB
+
 //=============================================
 
 //NALOG.RU
 ADDNALOG()
-OPENNALOG()
-ALTTAB()
+ADD_OBJECT()
 
-//Excel Наименование-Страна
-EXCEL_COPY_NEXT()
-ALTTAB()
-
-//NALOG.RU Наименование-Страна
-TAB(2)
-PASTE()
 TAB(1)
-ALTTAB()
+INPUT_KOD_DOHODA()
+SELECT_NALOG_VICHET()
 
-//Excel Страна-Сумма дохода
-EXCEL_COPY_NEXT()
-ALTTAB()
+// РЎСѓРјРјР° РґРѕС…РѕРґР°
+SELECT_SUMMA_DOHODA()
+PASTE_NEXT_FROM_EXCEL()
 
-//NALOG.RU Наименование-Страна-Вычет-Сумма
+// Р”Р°С‚Р° РїРѕР»СѓС‡РµРЅРёСЏ РґРѕС…РѕРґР°
+TAB(2)
+PASTE_NEXT_FROM_EXCEL()
+TAB(1)
 PASTE()
+
+// РќР°РёРјРµРЅРѕРІР°РЅРёРµ РІР°Р»СЋС‚С‹
 TAB(3)
-INPUT_VID_DOHODA()
-TAB(2)
-INPUT_NALOG_VICHET()
-TAB(2)
-ALTTAB()
-
-//Excel Сумма дохода-Даты
-EXCEL_COPY_NEXT()
-ALTTAB()
-
-//NALOG.RU Сумма-Дата1
-PASTE()
+SELECT_INPUT()
+SHIFTTAB()
+PASTE_NEXT_FROM_EXCEL()
+SELECT_FIRST_OPTION()
+PRESS(#PAGEDOWN,3)
+WAITMS($g_wait) 
+LCLICK($auto_curs_btn_x,$auto_curs_btn_y)
+WAITMS($g_wait) 
 TAB(1)
 ALTTAB()
-
-//Excel Даты-Валюта
 EXCEL_COPY_NEXT()
+NEXT_ROW_EXCEL()
 ALTTAB()
-
-//NALOG.RU Дата1-Дата2-Валюта
 PASTE()
-ENTER()
-TAB(1)
-PASTE()
-ENTER()
-TAB(1)
-ALTTAB()
+PRESS(#PAGEUP,5)
 
-//Excel Валюта-Налог
-EXCEL_COPY_NEXT()
-ALTTAB()
-
-//NALOG.RU Валюта-Налог
-PASTE()
-TAB(6)
-SPACE()
-TAB(1)
-ALTTAB()
-
-//Excel Налог-Следующая строка-Наименование
-EXCEL_COPY_NEXT()
-ENTER()
-ENTER()
-ALTTAB()
-
-//NALOG.RU Налог
-PASTE()
-KEYPRESS(#PAGEDOWN)
+MOVE($addnalog_x,$addnalog_y)
 
 HALT
